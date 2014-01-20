@@ -12,7 +12,6 @@ module.exports = function (grunt) {
 					'!**/*.exclude.js',
 					jsRoot + 'lib/jquery.min.js',
 					jsRoot + 'lib/angular.min.js',
-					jsRoot + 'lib/bootstrap.min.js',
 					jsRoot + 'lib/*.js',
 					jsRoot + 'src/app.js',
 					jsRoot + 'src/**/*.js'
@@ -30,7 +29,7 @@ module.exports = function (grunt) {
 					jsRoot + 'src/**/*.js',
 					jsRoot + 'src/README.md'
 				],
-				tasks: ['concat', 'exec:build_docs']
+				tasks: ['parallel:js']
 			},
 			other: {
 				files: [
@@ -56,6 +55,14 @@ module.exports = function (grunt) {
 				mangle: false,
 				report: 'min'
 			}
+		},
+		parallel: {
+			js: {
+				options: {
+					grunt: true
+				},
+				tasks: ['concat:dev', 'exec:build_docs']
+			}
 		}
 	});
 
@@ -63,6 +70,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-exec');
+	grunt.loadNpmTasks('grunt-parallel');
 
 	grunt.registerTask('default', ['concat', 'watch']);
 	grunt.registerTask('build', ['concat', 'uglify']);

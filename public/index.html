@@ -4,14 +4,24 @@
 	<title>Assignments</title>
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive-nav.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 	<script src="js/dev/bundle.js"></script>
 </head>
 <body ng-app="app" ng-controller="mainCtrl">
-	<header app-header></header>
+	<header app-header>
+		<ul class="nav nav-pills">
+			<li><a href="#/assignments">Assignments</a></li>
+			<li><a href="#/courses">Manage Courses</a></li>
+			<li><a href="" ng-click="handleLogoutButtonClick()">Logout</a></li>
+		</ul>
+	</header>
 	<main ng-view></main>
+
+	<!-- livereload snippet -->
+	<script>
+		document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+	</script>
 </body>
 </html>
