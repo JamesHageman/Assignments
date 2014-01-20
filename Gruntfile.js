@@ -54,4 +54,5 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['concat', 'watch']);
 	grunt.registerTask('build', ['concat', 'uglify']);
+	grunt.registerTask('docs', ['exec:docs']);
 };
