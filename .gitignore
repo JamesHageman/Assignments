@@ -2,3 +2,4 @@ node_modules
 *.sublime-workspace
 sftp-config.json
 .DS_Store
+public/js/doc

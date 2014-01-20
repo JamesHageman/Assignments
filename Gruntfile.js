@@ -9,6 +9,7 @@ module.exports = function (grunt) {
 			},
 			dev: {
 				src: [
+					'!**/*.exclude.js',
 					jsRoot + 'lib/jquery.min.js',
 					jsRoot + 'lib/angular.min.js',
 					jsRoot + 'lib/bootstrap.min.js',
