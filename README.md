@@ -4,7 +4,7 @@ This is an application to manage your work / school assignments.
 
 ## Installing
 
-run `npm install` from the root directory. **JSDOC** should be installed
+run `npm install` from the root directory. [JSDOC](https://github.com/jsdoc3/jsdoc) should be installed
 globally for the documentation to work.
 
 ## Running the server
