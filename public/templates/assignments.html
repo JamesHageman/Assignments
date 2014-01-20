@@ -1,0 +1,29 @@
+<div ng-controller="assignmentsCtrl" class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>
+				{{assignments.length}} Assignments
+				<button class="btn btn-default pull-right" ng-click="handleNewButtonClick()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button>
+			</h3>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="list-group">
+				<a ng-repeat="item in assignments" 
+							class="list-group-item" 
+							ng-click="handleAssignmentClick(item)">
+					{{item.title || 'Untitled'}}
+					<button class="close pull-right" aria-hidden="true"
+								ng-click="handleAssignmentDeleteClick(item, $event)">
+						&times;
+					</button>
+				</a>
+
+			</div>
+		</div>	
+	</div>
+</div>

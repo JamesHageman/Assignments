@@ -1,0 +1,45 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		},
+		{
+			"path": "public",
+			"name": "Client"
+		},
+		{
+			"path": "server",
+			"name": "Server"
+		}
+	],
+
+	"ternjs": {
+		"include": [
+			"public/js/src/**",
+			"public/js/lib/**"
+		],
+		"exclude": [
+			"public/js/lib/jquery.min.js",
+			"node_modules/**"
+		],
+		"libs": [
+			"browser",
+			"jquery",
+			"ecma5"
+		],
+		"plugins": {
+			"angular": "./public/js/src/"
+		}
+	},
+
+	"settings": {
+		"AngularJS": {
+			"folders": [
+				"public/js/src",
+				"public/templates"
+			]
+		}
+	}
+}

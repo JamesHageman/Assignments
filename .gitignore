@@ -1,3 +1,4 @@
 node_modules
-*.submlime-workspace
+*.sublime-workspace
 sftp-config.json
+.DS_Store
