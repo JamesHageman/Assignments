@@ -21,18 +21,29 @@ module.exports = function (grunt) {
 			}
 		},
 		watch: {
+			options: {
+				livereload: true
+			},
 			src: {
 				files: [
 					jsRoot + 'lib/**/*.js',
 					jsRoot + 'src/**/*.js',
 					jsRoot + 'src/README.md'
 				],
-				tasks: ['concat', 'exec:docs']
+				tasks: ['concat', 'exec:build_docs']
+			},
+			other: {
+				files: [
+					'public/templates/**',
+					'public/css/**',
+					'public/index.html'
+				]
 			}
 		},
 		exec: {
-			docs: {
-				cmd: 'jsdoc ./public/js/src ./public/js/src/README.md -r -d ./public/js/doc/'
+			build_docs: {
+				cmd: 'jsdoc ./public/js/src ./public/js/src/README.md ' +
+						'-r -d ./public/js/doc/'
 			}
 		},
 		uglify: {
