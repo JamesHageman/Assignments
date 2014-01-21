@@ -8,3 +8,16 @@
 body {
 	padding-top: 15px;
 }
+
+nav {
+	transition-property: max-height;
+	transition-duration: .25s;
+	transition-timing-function: ease;
+	max-height: 1000px;
+	overflow: hidden;
+}
+
+nav.closed {
+	max-height: 0;
+	z-index: 100;
+}

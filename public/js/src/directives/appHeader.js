@@ -3,20 +3,23 @@ angular.module('app').directive('appHeader', function () {
 		restrict: 'A',
 		templateUrl: 'templates/header.html',
 		transclude: true,
+		scope: true,
 		link: function (scope, elem) {
 			var smallNav = elem.find('.small-nav'),
 				largeNav = elem.find('.large-nav'),
 				toggle = elem.find('.nav-toggle');
 
 			smallNav.find('ul').addClass('nav-stacked');
-			smallNav.hide();
+			smallNav.click('a', function () {
+				smallNav.addClass('closed');
+			});
 
 			toggle.on('click', function () {
-				smallNav.slideToggle(150);
+				smallNav.toggleClass('closed');
 			});
 
 			toggle.on('touchend', function (e) {
-				smallNav.slideToggle(150);
+				smallNav.toggleClass('closed');
 				e.preventDefault();
 				e.stopPropagation();
 			});
