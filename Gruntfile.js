@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 					jsRoot + 'src/**/*.js',
 					jsRoot + 'src/README.md'
 				],
-				tasks: ['parallel:js']
+				tasks: ['concat:dev'] // used to be parallel:js
 			},
 			other: {
 				files: [
