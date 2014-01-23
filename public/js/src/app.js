@@ -23,8 +23,10 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngAnimate'])
 			redirectTo: '/'
 		});
 })
-.run(function ($rootScope) {
-	$rootScope.$on('$viewContentLoaded', function () {
-
+.run(function ($rootScope, $location, User) {
+	$rootScope.$on('$routeChangeStart', function () {
+		if (!User.loggedIn()) {
+			$location.url('/login');
+		}
 	});
 });

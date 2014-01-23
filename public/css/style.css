@@ -15,9 +15,15 @@ nav {
 	transition-timing-function: ease;
 	max-height: 150px;/* Change this if nav height can ever exceed this value */
 	overflow: hidden;
+	margin-bottom: 15px;
 }
 
 nav.closed {
 	max-height: 0;
 	z-index: 100;
+	margin-bottom: 0;
+}
+
+header {
+	margin-bottom: 15px;
 }
