@@ -10,13 +10,7 @@
 	<script src="js/dev/bundle.js"></script>
 </head>
 <body ng-app="app" ng-controller="mainCtrl">
-	<header app-header ng-controller="headerCtrl">
-		<ul class="nav nav-pills">
-			<li><a href="#/assignments">Assignments</a></li>
-			<li><a href="#/courses">Manage Courses</a></li>
-			<li><a href="" ng-click="handleLogoutButtonClick()">Logout</a></li>
-		</ul>
-	</header>
+	<header ng-include="'templates/header.html'"></header>
 	<main ng-view></main>
 
 	<!-- livereload snippet -->

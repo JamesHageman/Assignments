@@ -13,7 +13,7 @@ nav {
 	transition-property: max-height;
 	transition-duration: .25s;
 	transition-timing-function: ease;
-	max-height: 1000px;
+	max-height: 150px;/* Change this if nav height can ever exceed this value */
 	overflow: hidden;
 }
 
