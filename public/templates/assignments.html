@@ -3,9 +3,11 @@
 		<div class="col-xs-12">
 			<h3>
 				{{assignments.length}} Assignments
+				<div loading="Assignment.fetchAll"></div>
 				<button class="btn btn-default pull-right" ng-click="handleNewButtonClick()">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button>
+				<div loading="Assignment.create" class="pull-right"></div>
 			</h3>
 		</div>
 	</div>
@@ -21,6 +23,7 @@
 								ng-click="handleAssignmentDeleteClick(item, $event)">
 						&times;
 					</button>
+					<div loading="Assignment.delete@{{item._id}}" class="pull-right"></div>
 				</a>
 
 			</div>

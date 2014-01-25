@@ -17,16 +17,24 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
+			<div loading="Course.create"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
 			<div class="list-group">
 				<a ng-repeat="course in courses"
 							class="list-group-item">
 					{{course.name}}
+
 					<button class="close pull-right" aria-hidden="true"
 								ng-click="handleCourseDeleteClick(course)">
 						&times;
 					</button>
+					<div loading="Course.delete@{{course._id}}" class="pull-right"></div>
 				</a>
 			</div>
 		</div>
 	</div>
+
 </div>

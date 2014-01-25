@@ -10,7 +10,7 @@ body {
 }
 
 nav {
-	transition-property: max-height;
+	transition-property: max-height, margin-bottom;
 	transition-duration: .25s;
 	transition-timing-function: ease;
 	max-height: 150px;/* Change this if nav height can ever exceed this value */

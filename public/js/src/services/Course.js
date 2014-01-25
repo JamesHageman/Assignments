@@ -17,8 +17,8 @@ function someCtrl($scope, Course) {
 */
 
 angular.module('app').factory('Course',
-function ($resource) {
-	var resource = $resource('courses/:id', { id: '@_id' }, {
+function (Resource) {
+	var resource = Resource('Course', 'courses/:id', { id: '@_id' }, {
 		/**
 		Create a new course
 
@@ -28,7 +28,21 @@ function ($resource) {
 		@param {$resource~errorCallback} error
 		*/
 		create: {
-			method: 'POST'
+			method: 'POST',
+			url: 'courses'
+		},
+		/**
+		delete a course
+
+		@function Course.delete
+		@param {Object} options
+			@param {String} options.id
+		@param {$resource~successCallback} success
+		@param {$resource~errorCallback} error
+		*/
+		delete: {
+			method: 'DELETE',
+			eventId: true
 		}
 	});
 

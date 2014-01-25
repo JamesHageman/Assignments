@@ -23,8 +23,8 @@ function someCtrl($scope, Assignment) {
 @member Assignment#courseId {String}
 */
 
-angular.module('app').factory('Assignment', function ($resource) {
-	return $resource('assignments/:id', { id: '@_id' }, {
+angular.module('app').factory('Assignment', function (Resource) {
+	return Resource('Assignment', 'assignments/:id', { id: '@_id' }, {
 		/**
 		Get array of current user's assignments
 
@@ -62,6 +62,33 @@ angular.module('app').factory('Assignment', function ($resource) {
 		create: {
 			method: 'POST',
 			url: 'assignments'
+		},
+
+		/**
+		Get an assignment
+
+		@function Assignment.get
+		@param {Object} options
+			@param {String} options.id
+		@param {$resource~successCallback} success
+		@param {$resource~errorCallback} error
+		*/
+		get: {
+			method: 'GET',
+			eventId: true
+		},
+		/**
+		Delete an assignment
+
+		@function Assignment.delete
+		@param {Object} options
+			@param {String} options.id
+		@param {$resource~successCallback} success
+		@param {$resource~errorCallback} error
+		*/
+		delete: {
+			method: 'DELETE',
+			eventId: true
 		}
 	});
 });

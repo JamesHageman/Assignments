@@ -27,7 +27,7 @@ function someCtrl($scope, User) {
 @member User#courses {Array.<Course>}
 */
 
-angular.module('app').factory('User', function ($resource) {
+angular.module('app').factory('User', function (Resource) {
 	var _loggedIn = false,
 		_cachedUser = null,
 		loginInterceptor = {
@@ -42,7 +42,7 @@ angular.module('app').factory('User', function ($resource) {
 			}
 		};
 
-	var resource = $resource('users', {}, {
+	var resource = Resource('User', 'users', {}, {
 		/**
 		Log in by passing username and password
 
