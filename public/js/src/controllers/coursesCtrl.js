@@ -35,5 +35,4 @@ function ($scope, User, Course) {
 		});
 	};
 
-
 });

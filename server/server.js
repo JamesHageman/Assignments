@@ -16,7 +16,8 @@ server
 			collection: 'session',
 			instance: require('mongoose')
 		})
-	}));
+	}))
+	.use(express.compress());
 
 db.on('error', function (error) {
 	console.log('DB Error: ', error);

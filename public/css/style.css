@@ -11,8 +11,12 @@ body {
 
 nav {
 	transition-property: max-height, margin-bottom;
+	-webkit-transition-property: max-height, margin-bottom;
 	transition-duration: .25s;
+	-webkit-transition-duration: .25s;
 	transition-timing-function: ease;
+	-webkit-transition-timing-function: ease;
+
 	max-height: 150px;/* Change this if nav height can ever exceed this value */
 	overflow: hidden;
 	margin-bottom: 15px;
@@ -26,4 +30,25 @@ nav.closed {
 
 header {
 	margin-bottom: 15px;
+}
+
+.list-group-item {
+	overflow: hidden;
+}
+
+.list-group-item-delete {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	padding: 0;
+	margin: 0;
+
+
+}
+
+.list-group-item-delete>button {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	height: 100%;
 }

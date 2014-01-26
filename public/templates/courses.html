@@ -27,11 +27,14 @@
 							class="list-group-item">
 					{{course.name}}
 
-					<button class="close pull-right" aria-hidden="true"
+					<!-- <button class="close pull-right" aria-hidden="true"
 								ng-click="handleCourseDeleteClick(course)">
 						&times;
-					</button>
-					<div loading="Course.delete@{{course._id}}" class="pull-right"></div>
+					</button> -->
+					<div class="list-group-item-delete">
+						<div loading="Course.delete@{{course._id}}"></div>
+						<button class="btn btn-danger">Delete</button>
+					</div>
 				</a>
 			</div>
 		</div>

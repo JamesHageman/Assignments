@@ -16,12 +16,14 @@ angular.module('app').directive('appNav', function () {
 
 			toggle.on('click', function () {
 				smallNav.toggleClass('closed');
+				this.blur();
 			});
 
 			toggle.on('touchend', function (e) {
 				smallNav.toggleClass('closed');
 				e.preventDefault();
 				e.stopPropagation();
+				this.blur();
 			});
 		}
 	};
