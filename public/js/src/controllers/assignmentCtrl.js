@@ -9,12 +9,7 @@ function ($scope, Assignment, $routeParams, $location, User) {
 
 	$scope.user = User.getCachedUser();
 
-	$scope.courses = [
-		{
-			name: 'None',
-			_id: 0
-		}
-	].concat($scope.user.courses);
+	$scope.courses = $scope.user.courses;
 
 
 	$scope.saveButtonClick = function () {

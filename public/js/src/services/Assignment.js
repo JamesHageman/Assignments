@@ -23,7 +23,7 @@ function someCtrl($scope, Assignment) {
 @member Assignment#courseId {String}
 */
 
-angular.module('app').factory('Assignment', function (Resource) {
+angular.module('app').factory('Assignment', function (Resource, User) {
 	return Resource('Assignment', 'assignments/:id', { id: '@_id' }, {
 		/**
 		Get array of current user's assignments
@@ -39,7 +39,27 @@ angular.module('app').factory('Assignment', function (Resource) {
 		fetchAll: {
 			method: 'GET',
 			url: 'assignments',
-			isArray: true
+			isArray: true,
+			interceptor: {
+				response: function (res) {
+					var user = User.getCachedUser();
+					res.resource.forEach(function (assignment) {
+						var courseId = assignment.courseId;
+						user.courses.every(function (course) {
+							if (course._id == courseId) {
+								assignment.course = course;
+								return false; // stop searching
+							}
+							return true; // keep searching
+						});
+						if (!assignment.course) {
+							assignment.courseId = '0';
+						}
+					});
+					console.log(res);
+					return res;
+				}
+			}
 		},
 		/**
 		@function Assignment.save

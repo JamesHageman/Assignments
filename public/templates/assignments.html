@@ -26,6 +26,7 @@
 							class="list-group-item"
 							ng-click="handleAssignmentClick(item)">
 					{{item.title || 'Untitled'}}
+					<span class="text-muted">{{item.course.name}}</span>
 					<!-- <button class="close pull-right" aria-hidden="true"
 								ng-click="handleAssignmentDeleteClick(item, $event)">
 						&times;

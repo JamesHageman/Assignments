@@ -6,13 +6,14 @@ angular.module('app').config(function ($httpProvider) {
 
 				var eventName = config.resourceEvent;
 
+				$rootScope.$broadcast('request:' + eventName);
+
 				if (config.eventId) {
 					var urlArray = config.url.split('/'),
 						id = urlArray[urlArray.length - 1];
 					eventName += '@' + id;
 				}
 
-				console.log('request:' + eventName);
 				$rootScope.$broadcast('request:' + eventName);
 				return config;
 			},
@@ -22,13 +23,14 @@ angular.module('app').config(function ($httpProvider) {
 
 				var eventName = res.config.resourceEvent;
 
+				$rootScope.$broadcast('response:' + eventName);
+
 				if (res.config.eventId) {
 					var urlArray = res.config.url.split('/'),
 						id = urlArray[urlArray.length - 1];
 					eventName += '@' + id;
 				}
 
-				console.log('response:' + eventName);
 				$rootScope.$broadcast('response:' + eventName);
 				return res;
 			}

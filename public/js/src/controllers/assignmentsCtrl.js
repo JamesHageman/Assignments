@@ -7,7 +7,7 @@ function ($scope, Assignment, User, $location) {
 		function() {
 
 		}, function (error) {
-			console.log(error);
+			alert('Error fetching assignments');
 		});
 	} else {
 		$location.replace();

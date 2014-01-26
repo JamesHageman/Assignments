@@ -25,6 +25,7 @@
 			<div class="form-group">
 				<select class="form-control" ng-model="item.courseId"
 						ng-options="c._id as c.name for c in courses">
+					<option value="">None</option>
 				</select>
 			</div>
 		</div>
@@ -38,5 +39,4 @@
 
 		</div>
 	</div>
-	<!-- <pre>{{item | json}}</pre> -->
 </div>
