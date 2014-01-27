@@ -25,7 +25,11 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngAnimate'])
 })
 .run(function ($rootScope, $location, User) {
 	$rootScope.$on('$routeChangeStart', function () {
+		var url = $location.url();
 		if (!User.loggedIn()) {
+			if (url == '/createaccount' || url == '/login') {
+				return;
+			}
 			$location.url('/login');
 		}
 	});

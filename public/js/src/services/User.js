@@ -27,18 +27,20 @@ function someCtrl($scope, User) {
 @member User#courses {Array.<Course>}
 */
 
-angular.module('app').factory('User', function (Resource) {
+angular.module('app').factory('User', function (Resource, $rootScope) {
 	var _loggedIn = false,
 		_cachedUser = null,
 		loginInterceptor = {
 			response: function (res) {
 				_loggedIn = true;
 				_cachedUser = res.data;
+				$rootScope.$broadcast('login');
 				return res;
 			},
 			responseError: function () {
 				_loggedIn = false;
 				_cachedUser = null;
+				$rootScope.$broadcast('logout');
 			}
 		};
 
@@ -74,6 +76,7 @@ angular.module('app').factory('User', function (Resource) {
 			interceptor: {
 				response: function () {
 					_loggedIn = false;
+					$rootScope.$broadcast('logout');
 				}
 			}
 		},

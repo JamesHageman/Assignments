@@ -43,11 +43,27 @@ header {
 	right: 0;
 	padding: 0;
 	margin: 0;
-
-
 }
 
 .list-group-item-delete>button {
 	border-radius: 0;
 	height: 100%;
 }
+
+.main.ng-enter {
+	-webkit-transition: 0.5s linear all;
+	transition: 0.5s linear all;
+	opacity: 0;
+}
+
+.main.ng-enter-active {
+	opacity: 1;
+}
+
+/*.main.ng-leave {
+	opacity: 0;
+}
+
+.main.ng-leave-active {
+	opacity: 1;
+}*/

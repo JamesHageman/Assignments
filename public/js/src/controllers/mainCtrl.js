@@ -11,6 +11,10 @@ function (User, $location, $timeout, $scope) {
 		$location.url(url);
 	}, function () {
 		$location.replace();
-		$location.url('/login');
+		if (url == '/createaccount') {
+			$location.url(url);
+		} else {
+			$location.url('/login');
+		}
 	});
 });
