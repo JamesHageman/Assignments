@@ -12,7 +12,7 @@
 				</ng-pluralize>
 				<div loading="Assignment.fetchAll"></div>
 				<button class="btn btn-default pull-right" ng-click="handleNewButtonClick()">
-					<span class="glyphicon glyphicon-plus"></span>
+					<span class="ion-plus-round"></span>
 				</button>
 				<div loading="Assignment.create" class="pull-right"></div>
 			</h3>
@@ -27,10 +27,6 @@
 							ng-click="handleAssignmentClick(item)">
 					{{item.title || 'Untitled'}}
 					<span class="text-muted">{{item.course.name}}</span>
-					<!-- <button class="close pull-right" aria-hidden="true"
-								ng-click="handleAssignmentDeleteClick(item, $event)">
-						&times;
-					</button> -->
 					<div class="list-group-item-delete">
 						<div loading="Assignment.delete@{{item._id}}"></div>
 						<button class="btn btn-danger "

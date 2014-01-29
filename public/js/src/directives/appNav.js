@@ -5,7 +5,7 @@ angular.module('app').directive('appNav', function () {
 		transclude: true,
 		scope: true,
 		link: function (scope, elem) {
-			var smallNav = elem.find('.small-nav'),
+			var smallNav = elem.find('.app-nav-mobile'),
 				largeNav = elem.find('.large-nav'),
 				toggle = elem.find('.nav-toggle');
 
