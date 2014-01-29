@@ -17,6 +17,21 @@ module.exports = function (grunt) {
 					jsRoot + 'src/**/*.js'
 				],
 				dest: jsRoot + 'dev/bundle.js'
+			},
+			react_lib: {
+				src: [
+					'public/react/js/lib/*.js'
+				],
+				dest: 'public/react/js/dev/lib.js'
+			},
+			react_src: {
+				src: [
+					'public/react/js/src/*.js',
+					'!public/react/js/src/AppRouter.js',
+					'public/react/js/src/AppRouter.js'
+				],
+				dest: 'public/react/js/dev/src.js',
+				nonull: true
 			}
 		},
 		watch: {
@@ -37,6 +52,12 @@ module.exports = function (grunt) {
 					'public/css/**',
 					'public/index.html'
 				]
+			},
+			react: {
+				files: [
+					'public/react/**'
+				],
+				tasks: ['concat:react_lib', 'concat:react_src']
 			}
 		},
 		exec: {
@@ -75,4 +96,5 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['concat', 'watch']);
 	grunt.registerTask('build', ['concat', 'uglify']);
 	grunt.registerTask('docs', ['exec:build_docs']);
+	grunt.registerTask('react', ['concat:react_lib', 'concat:react_src', 'watch:react']);
 };
