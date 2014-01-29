@@ -12,6 +12,10 @@
 		{
 			"path": "server",
 			"name": "Server"
+		},
+		{
+			"path": "public/react",
+			"name": "React"
 		}
 	],
 
