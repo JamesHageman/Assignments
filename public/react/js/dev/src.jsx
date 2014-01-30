@@ -36,7 +36,7 @@ window.API = (function ($) {
 window.App = (function ($, React) {
 	return {
 		init: function () {
-			this.root = RootComponent(null);
+			this.root = <RootComponent/>;
 
 			location.hash = location.hash || '#/';
 
@@ -66,12 +66,12 @@ window.AssignmentList = React.createClass({
 
 		var assignmentListItems = this.state.assignments.map(function (assignment) {
 			return (
-				React.DOM.li(null, 
-					React.DOM.a( {href:'#/assignment/' + assignment._id}, assignment.title)
-				)
+				<li>
+					<a href={'#/assignment/' + assignment._id}>{assignment.title}</a>
+				</li>
 			);
 		});
-		var list = React.DOM.ul(null, assignmentListItems);
+		var list = <ul>{assignmentListItems}</ul>;
 
 		var rootChildren = [];
 		if (this.state.loading) {
@@ -79,7 +79,7 @@ window.AssignmentList = React.createClass({
 		}
 		rootChildren.push(list);
 
-		var root = React.DOM.div(null, rootChildren)
+		var root = <div>{rootChildren}</div>
 		return root;
 	}
 });
@@ -97,17 +97,17 @@ window.AssignmentView = React.createClass({
 	},
 	render: function () {
 		if (this.state.loading) {
-			return React.DOM.div(null, "Fetching...");
+			return <div>Fetching...</div>;
 		} else {
 			if (this.state.assignment) {
 				return (
-					React.DOM.div(null, 
-						React.DOM.h3(null, this.state.assignment.title),
-						React.DOM.p(null, this.state.assignment.description)
-					)
+					<div>
+						<h3>{this.state.assignment.title}</h3>
+						<p>{this.state.assignment.description}</p>
+					</div>
 				);
 			} else {
-				return React.DOM.div(null);
+				return <div></div>;
 			}
 		}
 	}
@@ -120,10 +120,10 @@ window.AssignmentView = React.createClass({
 window.NotFoundView = React.createClass({
 	render: function () {
 		return (
-			React.DOM.div(null, 
-				React.DOM.h3(null, "Page not found"),
-				React.DOM.a( {href:"#/"}, "Go to home page")
-			)
+			<div>
+				<h3>Page not found</h3>
+				<a href='#/'>Go to home page</a>
+			</div>
 		);
 	}
 });
@@ -135,17 +135,17 @@ window.NotFoundView = React.createClass({
 window.RootComponent = React.createClass({
 	render: function () {
 		return (
-			React.DOM.div(null, 
-				React.DOM.header( {className:"container"}, 
-					React.DOM.h1(null, "Assignments")
-				),
-				React.DOM.hr(null),
-				AppRouter(null),
-				React.DOM.hr(null),
-				React.DOM.footer( {className:"container"}, 
-					React.DOM.small(null, "2014 James Hageman")
-				)
-			)
+			<div>
+				<header className="container">
+					<h1>Assignments</h1>
+				</header>
+				<hr/>
+				<AppRouter/>
+				<hr/>
+				<footer className="container">
+					<small>2014 James Hageman</small>
+				</footer>
+			</div>
 		);
 	}
 });
@@ -164,7 +164,7 @@ $(function () {
 
 window.AppRouter = (function () {
 	var rootNode = document.getElementById('main'),
-		assignmentList = AssignmentList(null),
+		assignmentList = <AssignmentList/>,
 		_assignments = [],
 		router, currentView, componentClass;
 
@@ -187,7 +187,7 @@ window.AppRouter = (function () {
 			});
 		},
 		'/assignment/:id': function (id) {
-			currentView = AssignmentView(null);
+			currentView = <AssignmentView/>;
 
 			currentView.setState({
 				loading: true
@@ -201,7 +201,7 @@ window.AppRouter = (function () {
 			});
 		},
 		'/404': function () {
-			currentView = NotFoundView(null);
+			currentView = <NotFoundView/>;
 		}
 	}).configure({
 		notfound: function () {
@@ -211,7 +211,7 @@ window.AppRouter = (function () {
 
 	componentClass = React.createClass({
 		render: function () {
-			return currentView || React.DOM.div(null);
+			return currentView || <div></div>;
 		}
 	});
 

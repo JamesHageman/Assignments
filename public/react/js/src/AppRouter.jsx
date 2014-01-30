@@ -1,12 +1,13 @@
 window.AppRouter = (function () {
 	var rootNode = document.getElementById('main'),
-		assignmentList = AssignmentList(),
-		_assignments = [];
+		assignmentList = <AssignmentList/>,
+		_assignments = [],
+		router, currentView, componentClass;
 
-	return new Router({
+	router = new Router({
 		'/': function () {
 
-			React.renderComponent(assignmentList, rootNode);
+			currentView = assignmentList;
 
 			assignmentList.setState({
 				assignments: _assignments,
@@ -22,27 +23,38 @@ window.AppRouter = (function () {
 			});
 		},
 		'/assignment/:id': function (id) {
-			var view = AssignmentView();
+			currentView = <AssignmentView/>;
 
-			React.renderComponent(view, rootNode);
-
-			view.setState({
+			currentView.setState({
 				loading: true
 			});
 
 			API.assignments.get(id).done(function (assignment) {
-				view.setState({
+				currentView.setState({
 					loading: false,
 					assignment: assignment
 				});
 			});
 		},
 		'/404': function () {
-			React.renderComponent(NotFoundView(), rootNode);
+			currentView = <NotFoundView/>;
 		}
 	}).configure({
 		notfound: function () {
 			location.hash = '/404';
 		}
 	});
+
+	componentClass = React.createClass({
+		render: function () {
+			return currentView || <div></div>;
+		}
+	});
+
+	componentClass.init = function () {
+		router.init();
+	};
+
+	return componentClass;
+
 })();

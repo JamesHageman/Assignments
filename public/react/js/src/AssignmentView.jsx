@@ -7,15 +7,17 @@ window.AssignmentView = React.createClass({
 	},
 	render: function () {
 		if (this.state.loading) {
-			return React.DOM.div(null, 'Fetching...');
+			return <div>Fetching...</div>;
 		} else {
 			if (this.state.assignment) {
-				return React.DOM.div(null, [
-					React.DOM.h3(null, this.state.assignment.title),
-					React.DOM.p(null, this.state.assignment.description)
-				]);
+				return (
+					<div>
+						<h3>{this.state.assignment.title}</h3>
+						<p>{this.state.assignment.description}</p>
+					</div>
+				);
 			} else {
-				return React.DOM.div(null, '');
+				return <div></div>;
 			}
 		}
 	}

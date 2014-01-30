@@ -18,20 +18,18 @@ module.exports = function (grunt) {
 				],
 				dest: jsRoot + 'dev/bundle.js'
 			},
-			react_lib: {
-				src: [
-					'public/react/js/lib/*.js'
-				],
-				dest: 'public/react/js/dev/lib.js'
-			},
-			react_src: {
-				src: [
-					'public/react/js/src/*.js',
-					'!public/react/js/src/AppRouter.js',
-					'public/react/js/src/AppRouter.js'
-				],
-				dest: 'public/react/js/dev/src.js',
-				nonull: true
+			react: {
+				files: {
+					'public/react/js/dev/lib.js': [
+						'public/react/js/lib/*.js'
+					],
+					'public/react/js/dev/src.jsx': [
+						'public/react/js/src/banner.js',
+						'public/react/js/src/*',
+						'!public/react/js/src/AppRouter.jsx',
+						'public/react/js/src/AppRouter.jsx'
+					]
+				}
 			}
 		},
 		watch: {
@@ -55,9 +53,12 @@ module.exports = function (grunt) {
 			},
 			react: {
 				files: [
-					'public/react/**'
+					'public/react/js/src/**',
+					'public/react/js/lib/**',
+					'public/react/css/**',
+					'public/react/index.html'
 				],
-				tasks: ['concat:react_lib', 'concat:react_src']
+				tasks: ['concat:react', 'react:dev']
 			}
 		},
 		exec: {
@@ -84,6 +85,13 @@ module.exports = function (grunt) {
 				},
 				tasks: ['concat:dev', 'exec:build_docs']
 			}
+		},
+		react: {
+			dev: {
+				files: {
+					'public/react/js/dev/src.js': 'public/react/js/dev/src.jsx'
+				}
+			}
 		}
 	});
 
@@ -92,9 +100,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-parallel');
+	grunt.loadNpmTasks('grunt-react');
 
 	grunt.registerTask('default', ['concat', 'watch']);
 	grunt.registerTask('build', ['concat', 'uglify']);
 	grunt.registerTask('docs', ['exec:build_docs']);
-	grunt.registerTask('react', ['concat:react_lib', 'concat:react_src', 'watch:react']);
+	grunt.registerTask('react-dev', ['concat:react', 'react:dev', 'watch:react']);
 };

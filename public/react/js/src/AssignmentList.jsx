@@ -8,12 +8,13 @@ window.AssignmentList = React.createClass({
 	render: function () {
 
 		var assignmentListItems = this.state.assignments.map(function (assignment) {
-			return React.DOM.li(null,
-				React.DOM.a({
-					href: '#/assignment/' + assignment._id
-				}, assignment.title));
+			return (
+				<li>
+					<a href={'#/assignment/' + assignment._id}>{assignment.title}</a>
+				</li>
+			);
 		});
-		var list = React.DOM.ul(null, assignmentListItems);
+		var list = <ul>{assignmentListItems}</ul>;
 
 		var rootChildren = [];
 		if (this.state.loading) {
@@ -21,7 +22,7 @@ window.AssignmentList = React.createClass({
 		}
 		rootChildren.push(list);
 
-		var root = React.DOM.div(null, rootChildren);
+		var root = <div>{rootChildren}</div>
 		return root;
 	}
 });
