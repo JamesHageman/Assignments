@@ -55,6 +55,7 @@ window.App = (function ($, React) {
 ;
 
 
+
 window.AssignmentList = React.createClass({
 	getInitialState: function () {
 		return {
@@ -79,7 +80,7 @@ window.AssignmentList = React.createClass({
 		}
 		rootChildren.push(list);
 
-		var root = React.DOM.div(null, rootChildren)
+		var root = React.DOM.div(null, rootChildren);
 		return root;
 	}
 });

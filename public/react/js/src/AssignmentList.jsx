@@ -1,3 +1,4 @@
+
 window.AssignmentList = React.createClass({
 	getInitialState: function () {
 		return {
@@ -22,7 +23,7 @@ window.AssignmentList = React.createClass({
 		}
 		rootChildren.push(list);
 
-		var root = <div>{rootChildren}</div>
+		var root = <div>{rootChildren}</div>;
 		return root;
 	}
 });
