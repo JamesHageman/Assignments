@@ -1,24 +1,12 @@
-<!doctype html>
 <html>
 <head>
-	<title>Assignments</title>
-
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-
+	<title>Assignments | React</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-	<script src="js/dev/bundle.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body ng-app="app" ng-controller="mainCtrl">
-	<header ng-include="'templates/header.html'"></header>
-	<main ng-view class="main">
-		<img src="img/ajax-loader.gif" />
-	</main>
-
-	<!-- livereload snippet -->
-	<script>
-		document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
-	</script>
+<body>
+	<div id="root"></div>
+	<script src="js/dev/lib.js"></script>
+	<script src="js/dev/src.js"></script>
 </body>
 </html>
